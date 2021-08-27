@@ -37,3 +37,14 @@ export class UserDatabase extends BaseDatabase {
   }
 
 }
+
+export interface UserDatabaseBase {
+  createUser(
+    id: string,
+    email: string,
+    name: string,
+    password: string,
+    role: string
+  ): Promise<void>;
+  getUserByEmail(email: string): Promise<User | undefined>;
+}

@@ -1,6 +1,11 @@
 import * as jwt from "jsonwebtoken";
 
-export class Authenticator {
+export interface AuthenticatorBase {
+  generateToken(input: AuthenticationData, expiresIn?: string): string;
+  getData(token: string): AuthenticationData;
+}
+
+export class Authenticator implements AuthenticatorBase {
   public generateToken(input: AuthenticationData,
     expiresIn: string = process.env.ACCESS_TOKEN_EXPIRES_IN!): string {
     const token = jwt.sign(
@@ -30,3 +35,4 @@ interface AuthenticationData {
   id: string;
   role?: string;
 }
+

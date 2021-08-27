@@ -6,3 +6,7 @@ export class IdGenerator{
         return v4();
     }
 }
+
+export interface IdGeneratorBase {
+    generate(): string;
+  }
