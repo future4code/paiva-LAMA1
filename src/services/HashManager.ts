@@ -15,3 +15,8 @@ export class HashManager {
     }
 
 }
+
+export interface HashManagerBase {
+    hash(text: string): string;
+    compare(text: string, hash: string): boolean;
+  }
